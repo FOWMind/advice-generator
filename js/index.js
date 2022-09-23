@@ -2,6 +2,9 @@ const adviceId = document.getElementById("advice-id")
 const adviceQuote = document.getElementById("advice-quote")
 const generateAdviceButton = document.getElementById("generate-advice-button")
 
+let clickBlocked = false
+const clickBlockedTime = 1000 // time in milliseconds
+
 const fetchStatuses = {
   idle: "idle",
   inProgress: "inProgress",
@@ -35,10 +38,19 @@ function showAdvice(advice) {
   adviceQuote.innerHTML = `“${advice.advice}”`
 }
 
+function blockClick() {
+  clickBlocked = true
+  setTimeout(() => {
+    clickBlocked = false
+  }, clickBlockedTime)
+}
+
 window.addEventListener("DOMContentLoaded", () => {
   generateAdvice()
 
   generateAdviceButton.addEventListener("click", () => {
+    if (clickBlocked) return
+    blockClick()
     if (fetching.status === fetchStatuses.finished) {
       generateAdvice()
     }
