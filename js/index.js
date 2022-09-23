@@ -40,7 +40,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   generateAdviceButton.addEventListener("click", () => {
     if (fetching.status === fetchStatuses.finished) {
-      console.log("generando")
       generateAdvice()
     }
   })
