@@ -46,6 +46,10 @@ img {
   display: block;
 }
 
+img::selection {
+  background: none;
+}
+
 .featured-text {
   color: var(--featured-clr);
 }
