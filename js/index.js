@@ -3,7 +3,16 @@ const adviceQuote = document.getElementById("advice-quote")
 const generateAdviceButton = document.getElementById("generate-advice-button")
 
 let clickBlocked = false
-const clickBlockedTime = 1000 // time in milliseconds
+
+/*
+* According to api.adviceslip.com:
+* "Advice is cached for 2 seconds.
+* Any repeat-request within 2 seconds will return the same piece of advice."
+
+* Then the recommended time is 2000ms or more.
+
+*/
+const clickBlockedTime = 2100 // time in milliseconds
 
 const fetchStatuses = {
   idle: "idle",
